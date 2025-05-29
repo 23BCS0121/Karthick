@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.html">
+    <style>
+        *, ::before, ::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-image: url('C:\Users\Dell\Pictures\Saved Pictures\login 2.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .home-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: blueviolet;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .home-button:hover {
+            background-color: darkviolet;
+        }
+
+        .form-box {
+            background-color: white;
+            padding: 64px 32px;
+            box-shadow: 0 10px 25px black;
+            border-radius: 16px;
+            width: 360px;
+        }
+
+        .form-title {
+            font-weight: 500;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .form-control {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 48px;
+            padding: 1rem;
+            font-size: 16px;
+            border: 1px solid #dadce0;
+            border-radius: 0.5rem;
+            outline: none;
+            background: none;
+        }
+
+        label {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            font-size: 16px;
+            background-color: white;
+            color: #80868b;
+            padding: 0.25rem;
+            transition: 0.2s ease-in-out;
+        }
+
+        .form-input:focus ~ label,
+        .form-input:not(:placeholder-shown) ~ label {
+            top: -0.5rem;
+            left: 0.8rem;
+            font-size: 0.75rem;
+            color: #1a73e8;
+        }
+
+        .form-input:focus {
+            border: 2px solid #1a73e8;
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a73e8;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .form-btn:hover {
+            box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Button -->
+    
+    <div class="form-box">
+        <form action="login2.php" method="POST">
+            <h1 class="form-title">Login</h1>
+
+            <div class="form-control">
+                <input type="text" class="form-input" name="username" id="username" placeholder=" " required>
+                <label for="username">Username</label>
+            </div>
+
+            <div class="form-control">
+                <input type="password" class="form-input" name="password" id="password" placeholder=" " required>
+                <label for="password">Password</label>
+            </div>
+
+            <input type="submit" class="form-btn" value="Sign in">
+
+            <p class="signup-link">Don't have an account? 
+                <a href="test_signup.html">Sign up</a>
+            </p>
+           
+        </form>
+        <a href="Home.html" class="home-button">Home</a>
+    </div>
+</body>
+</html>
