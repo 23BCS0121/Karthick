@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Register - Online Food Delivery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .home-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: blueviolet;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .home-button:hover {
+            background-color: darkviolet;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 0px 10px gray;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+        input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit {
+            text-align: center;
+        }
+        .submit input {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit input[type="button"] {
+            background-color: #ccc;
+        }
+        .submit input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+    <script>
+        function validateregister() {
+            let name = document.getElementById("name").value.trim();
+            let age = document.getElementById("age").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phoneno = document.getElementById("phoneno").value.trim();
+            let loginId = document.getElementById("login_id").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let confirmPassword = document.getElementById("confirm_password").value.trim();
+
+            if (name === "" || age === "" || email === "" || phoneno === "" || loginId === "" || password === "" || confirmPassword === "") {
+                alert("All fields are required.");
+                return false;
+            }
+
+            let namePattern = /^[a-zA-Z\s]+$/;
+            if (!namePattern.test(name)) {
+                alert("Name can contain only letters and spaces.");
+                return false;
+            }
+
+            let ageValue = Number(age);
+            if (ageValue < 1 || ageValue > 100) {
+                alert("Please enter a valid age.");
+                return false;
+            }
+
+
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            let phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phoneno)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return false;
+            }
+
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            alert("Registration successful!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h2 style="color: blue;">ONLINE FOOD DELIVERY SYSTEM</h2>
+    </header>
+
+    <div class="container">
+        <h1>New Register</h1>
+        <form action="connect.php" method="post" onsubmit="return validateregister()">
+            <table>
+                <tr>
+                    <td><label for="name">NAME:</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="age">AGE:</label></td>
+                    <td><input type="number" id="age" name="age" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">EMAIL:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="phoneno">MOBILE NO:</label></td>
+                    <td><input type="number" id="phoneno" name="phoneno" required></td>
+                </tr>
+                <tr>
+                    <td><label for="login_id">LOGIN ID:</label></td>
+                    <td><input type="text" id="login_id" name="login_id" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">PASSWORD:</label></td>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td><label for="confirm_password">CONFIRM PASSWORD:</label></td>
+                    <td><input type="password" id="confirm_password" name="confirm_password" required></td>
+                </tr>
+            </table>
+            <div class="submit">
+                <input type="button" value="Back" onclick="history.back()">
+                <input type="submit" value="Submit">
+                <a href="Home.html" class="home-button">Home</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
