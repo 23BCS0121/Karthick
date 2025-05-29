@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu Page</title>
+  <style>
+    body {
+      background-color: rgb(240, 234, 234);
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .home-button {
+      display: inline-block;
+      margin: 20px;
+      padding: 10px 20px;
+      background-color: blueviolet;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .home-button:hover {
+      background-color: darkviolet;
+    }
+    .menu {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-gap: 20px;
+    }
+    .heading {
+      background-color: blueviolet;
+      color: aquamarine;
+      margin-bottom: 30px;
+      padding: 30px 0;
+      grid-column: 1/-1;
+      text-align: center;
+    }
+    .heading h1 {
+      font-weight: 400;
+      font-size: 32px;
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .heading h3 {
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .food-items {
+      display: grid;
+      position: relative;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+      transition: 0.2s ease-in-out;
+      background: white;
+    }
+    .food-items:hover {
+      transform: scale(1.02);
+    }
+    .food-items img {
+      width: 100%;
+      height: 280px;
+      border-radius: 15px 15px 0 0;
+      cursor: pointer;
+    }
+    .details {
+      padding: 20px;
+      display: grid;
+      grid-template-rows: auto 1fr 50px;
+      grid-row-gap: 15px;
+    }
+    .details-sub {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .details-sub h5 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .details button {
+      background: green;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .details button:hover {
+      background: yellow;
+      color: black;
+    }
+    .qty-control {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .qty-btn, .add-btn {
+      background-color: green;
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 5px;
+      padding: 10px;
+      width: 40px;
+      cursor: pointer;
+    }
+    .add-btn {
+      width: 100%;
+    }
+    .qty-btn:hover, .add-btn:hover {
+      background: yellow;
+      color: black;
+    }
+    .qty-number {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .payment-btn {
+      background-color: green;
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+    .payment-btn:disabled {
+      background-color: gray;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<a href="Home.html" class="home-button">Home</a>
+
+<div class="menu">
+  <div class="heading">
+    <h1>Restaurant Food</h1>
+    <h3>&mdash; Menu &mdash;</h3>
+  </div>
+        <div class="food-items">
+            <img src="chicken biryani.jpg" alt="Chicken Biryani">
+            <div class="details">
+                <div class="details-sub">
+                    <h5>Chicken Biryani</h5>
+                    <h5 class="price">Rs.129/-</h5>
+                </div>
+                <div class="add-to-cart" id="cart-control-1">
+                    <button class="add-btn" onclick="addToCart(1)">Add to Cart</button>
+                </div>
+                <a href="payment.html" class="payment-btn" id="payment-btn-1" onclick="return enableCheck(1)">Payment</a>
+            </div>
+        </div>
+
+        <div class="food-items">
+            <img src="veg briyani.jpg" alt="Veg Biryani">
+            <div class="details">
+                <div class="details-sub">
+                    <h5>Veg Biryani</h5>
+                    <h5 class="price">Rs.69/-</h5>
+                </div>
+                <div class="add-to-cart" id="cart-control-2">
+                    <button class="add-btn" onclick="addToCart(2)">Add to Cart</button>
+                </div>
+                <a href="payment.html" class="payment-btn" id="payment-btn-1" onclick="return enableCheck(1)">Payment</a>
+            </div>
+        </div>
+
+        <div class="food-items">
+            <img src="fried rice.jpg" alt="Fried Rice">
+            <div class="details">
+                <div class="details-sub">
+                    <h5>Fried Rice</h5>
+                    <h5 class="price">Rs.99/-</h5>
+                </div>
+                <div class="add-to-cart" id="cart-control-3">
+                    <button class="add-btn" onclick="addToCart(3)">Add to Cart</button>
+                </div>
+                <a href="payment.html" class="payment-btn" id="payment-btn-1" onclick="return enableCheck(1)">Payment</a>
+            </div>
+        </div>
+
+        <div class="food-items">
+            <img src="piza.jpg" alt="Pizza">
+            <div class="details">
+                <div class="details-sub">
+                    <h5>Pizza</h5>
+                    <h5 class="price">Rs.149/-</h5>
+                </div>
+                <div class="add-to-cart" id="cart-control-4">
+                    <button class="add-btn" onclick="addToCart(4)">Add to Cart</button>
+                </div>
+                <a href="payment.html" class="payment-btn" id="payment-btn-1" onclick="return enableCheck(1)">Payment</a>
+            </div>
+        </div>
+
+        <div class="food-items">
+            <img src="burger1.jpg" alt="Burger">
+            <div class="details">
+                <div class="details-sub">
+                    <h5>Burger</h5>
+                    <h5 class="price">Rs.160/-</h5>
+                </div>
+                <div class="add-to-cart" id="cart-control-5">
+                    <button class="add-btn" onclick="addToCart(5)">Add to Cart</button>
+                </div>
+                <a href="payment.html" class="payment-btn" id="payment-btn-1" onclick="return enableCheck(1)">Payment</a>
+            </div>
+        </div>
+
+        <div class="food-items">
+            <img src="noodels.jpeg" alt="Noodles">
+            <div class="details">
+                <div class="details-sub">
+                    <h5>Noodles</h5>
+                    <h5 class="price">Rs.139/-</h5>
+                </div>
+                <div class="add-to-cart" id="cart-control-6">
+                    <button class="add-btn" onclick="addToCart(6)">Add to Cart</button>
+                </div>
+                <a href="payment.html" class="payment-btn" id="payment-btn-1" onclick="return enableCheck(1)">Payment</a>
+            </div>
+        </div>
+
+        <div class="food-items">
+            <img src="cake.png" alt="Cake">
+            <div class="details">
+                <div class="details-sub">
+                    <h5>Cake</h5>
+                    <h5 class="price">Rs.80/-</h5>
+                </div>
+                <div class="add-to-cart" id="cart-control-7">
+                    <button class="add-btn" onclick="addToCart(7)">Add to Cart</button>
+                </div>
+                <a href="payment.html" class="payment-btn" id="payment-btn-1" onclick="return enableCheck(1)">Payment</a>
+            </div>
+        </div>
+
+      <div class="food-items">
+    <img src="kaju.webp" alt="Kaju Katli" />
+    <div class="details">
+      <div class="details-sub">
+        <h5>Kaju Katli</h5>
+        <h5 class="price">Rs.200/-</h5>
+      </div>
+      <div class="add-to-cart" id="cart-control-8">
+        <button class="add-btn" onclick="addToCart(8)">Add to Cart</button>
+      </div>
+      <a href="payment.html" class="payment-btn" id="payment-btn-1" onclick="return enableCheck(1)" disabled>Payment</a>
+    </div>
+  </div>
+
+        <div class="food-items">
+            <img src="brown.jpg" alt="Brownies">
+            <div class="details">
+                <div class="details-sub">
+                    <h5>Brownies</h5>
+                    <h5 class="price">Rs.150/-</h5>
+                </div>
+                <div class="add-to-cart" id="cart-control-9">
+                    <button class="add-btn" onclick="addToCart(9)">Add to Cart</button>
+                </div>
+                <a href="payment.html" class="payment-btn" id="payment-btn-1" onclick="return enableCheck(1)" disabled>Payment</a>
+            </div>
+        </div>
+    </div>
+
+  
+</div>
+
+<script>
+  const cartState = {};
+
+  function addToCart(id) {
+    cartState[id] = 1;
+    renderQtyControls(id);
+    document.getElementById(`payment-btn-${id}`).disabled = false;
+  }
+
+  function increaseQty(id) {
+    cartState[id]++;
+    renderQtyControls(id);
+  }
+
+  function decreaseQty(id) {
+    cartState[id]--;
+    if (cartState[id] <= 0) {
+      document.getElementById(`cart-control-${id}`).innerHTML =
+        `<button class="add-btn" onclick="addToCart(${id})">Add</button>`;
+      document.getElementById(`payment-btn-${id}`).disabled = true;
+    } else {
+      renderQtyControls(id);
+    }
+  }
+
+  function renderQtyControls(id) {
+    document.getElementById(`cart-control-${id}`).innerHTML = `
+      <div class="qty-control">
+        <button class="qty-btn" onclick="decreaseQty(${id})">−</button>
+        <span class="qty-number">${cartState[id]}</span>
+        <button class="qty-btn" onclick="increaseQty(${id})">+</button>
+      </div>
+    `;
+  }
+</script>
+
+</body>
+</html>
