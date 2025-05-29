@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        body {
+            background-image: url('your-background-image.jpg'); /* Add your background image here */
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        /* Home button style */
+        .home-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .home-button:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        .image img {
+            width: 50%;
+            height: auto;
+        }
+
+        .design {
+            background-color: cornsilk;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .companion {
+            font-family: 'Times New Roman', serif;
+            font-size: 18px;
+            text-align: left;
+            margin: 20px auto;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 3px;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dot-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: 0.4} 
+            to {opacity: 1}
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            background-color: #ff7f50;
+            color: white;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #ff6347;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Home Button -->
+    <a href="Home.html" class="home-button">Home</a>
+
+    <div class="image">
+        <img src="logo.png" alt="Company Banner">
+    </div>
+
+    <div class="design">
+        <h2>From Food Delivery to Your Daily Convenience Companion</h2>
+        <p class="companion">A subsidiary of Delivery Hero, Flavor of Home launched in Vellore in 2023 as a food ordering and delivery platform.</p>
+        <p class="companion">Dedicated to helping customers get their tasty favorites fast, it quickly won the hearts and minds of customers.</p>
+        <p class="companion">Powered by tech and operational excellence, Flavor of Home has been growing its quick-commerce footprint in more than 4 cities in Tamil Nadu.</p>
+        <p class="companion">Thanks to dedicated partners, riders, and a team united by shared values, Flavor of Home is now providing millions with a convenient way to get food in a few taps.</p>
+
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="karthik13.jpg" style="width:25%" alt="Slide 1">
+            </div>
+            <div class="mySlides fade">
+                <img src="" style="width:25%" alt="Slide 2">
+            </div>
+            <div class="mySlides fade">
+                <img src="none.jpg" style="width:25%" alt="Slide 3">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+
+        <h1>Our Values</h1>
+        <div class="button-container">
+            <button class="btn">Get 1% Better Every Day</button>
+            <button class="btn">Own It</button>
+            <button class="btn">Take Risks</button>
+            <button class="btn">Launch Moonshots</button>
+            <button class="btn">Win Through Diversity</button>
+            <button class="btn">Stay Humble</button>
+            <button class="btn">Create Experiences</button>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+
+</body>
+</html>
