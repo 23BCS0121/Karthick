@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery System</title>
+    <style>
+        *, ::after, ::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0 100px;
+            background-color: rgba(22, 241, 14, 0.719)
+        }
+
+        /* Menu */
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+        .explore-btn {
+            padding: 18px 40px;
+            font-size: 28px;
+            font-weight: bold;
+            background-color: blue;
+            color: white;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .explore-btn:hover {
+            background-color: darkblue;
+        }
+
+
+        .nav .logo h1 {
+            font-size: 30px;
+            font-family: sans-serif;
+            color: black;
+            text-align: center;
+        }
+
+        .nav .logo img {
+            display: block;
+            margin: 10px auto;
+            width: 120px;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav ul li {
+            margin-right: 30px;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+
+        .nav ul .active::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background-color: beige;
+            display: flex;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        input {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .signin {
+            background:blue ;
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 23px;
+        }
+
+        .signup {
+            background-color: blue;
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 23px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 50% auto;
+            gap: 30px;
+            margin-top: 120px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .content-left {
+            display: block;
+            width: 100%;
+        }
+
+        .content-left .info {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-left .info h2 {
+            font-size: 60px;
+            font-family: sans-serif;
+            margin-bottom: 30px;
+        }
+
+        .content-left .info p {
+            font-size: 23px;
+            line-height: 2pc;
+            margin-bottom: 30px;
+            font-family: sans-serif;
+        }
+
+        .content-left button {
+            padding: 10px 23px;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .content-right img {
+            width: 550px;
+            height: auto;
+            position: relative;
+        }
+
+        .category {
+            width: 100%;
+            display: flex;
+            margin-bottom: 50px;
+            justify-content: center;
+        }
+
+        .category .list-items {
+            width: 90%;
+            margin-top: 50px;
+        }
+
+        .category .list-items h3 {
+            font-size: 20px;
+            font-weight: 600;
+            font-family: sans-serif;
+            margin-bottom: 70px;
+        }
+
+        .category .list-items .card-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+       .category .card {
+            width: 200px;
+            height: 300px;
+            padding: 10px;
+            border-radius: 19px;
+            background: #66e262e7;
+            outline: 2px solid black;
+            text-align: center;
+            color: white;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* horizontally center children */
+            justify-content: flex-start; /* you can use 'center' if you want all content centered */
+        }
+
+        .qty-btn, .add-btn {
+            background-color: rgb(99, 146, 99);
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            padding: 10px;
+            width: 40px;
+            cursor: pointer;
+        }
+        .add-btn {
+            width: 100%;
+        }
+
+       .category .card img {
+            width: 100px;
+            height: 100px; /* set fixed height */
+            object-fit: cover;
+            object-position: right;
+            border-radius: 50%;
+            box-shadow: 0 20px 20px aliceblue;
+        }
+
+        
+
+        .category .card h1 {
+            font-size: 16px;
+            font-weight: bold;
+            font-family: sans-serif;
+            margin: 10px 0;
+        }
+
+        .category .card p {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .category .card .price {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="menu">
+        <div class="nav">
+            <div class="logo">
+                <h1></h1>
+                <img src="logo.png" alt="Fast Food Slogan">
+            </div>
+            <h1>Fast Food Slogan</h1>
+            <ul>
+                <li><a class="active" href="#">Home</a></li>
+                <li><a href="Menu1.html">Menu</a></li>
+                <li><a href="Feedback1.html">Feedback</a></li>
+                <li><a href="AboutUs1.html">About us</a></li>
+                <li><a href="contractus1.html">Contact us</a></li>
+            </ul>
+            <div>
+                <a href="Login1.html"><button class="signin">Log In / </button></a>
+                <a href="test_signup.html"><button class="signup">/ Sign Up</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="grid">
+        <div class="content">
+            <div class="content-left">
+                <div class="info">
+                    <h2>Order Your Best  Food <br> anytime</h2>
+                    
+                    <p>Save Time by getting your Food delivered....! <br> If you're hungry, you're not happy. I can help with that:</p>
+                </div>
+                <a href="Menu1.html"><button class="explore-btn">Explore</button></a>
+
+            </div>
+            <div class="content-right">
+                <img src="Variety.webp" >
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <div class="list-items">
+            <h3>Popular Dishes</h3>
+            <div class="card-list">
+                <div class="card">
+                    <img src="burger.jpeg" alt="Chicken Burger">
+                    <h1>Chicken Burger</h1>
+                    <p>A Burger can't leave without a chicken on it.</p>
+                    <div class="price">Rs.99/-</div><br>
+                      <div class="add-to-cart" id="cart-control-1">
+                    <button class="add-btn" onclick="addToCart(1)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="fries.jpeg" alt="Fries">
+                    <h1>Fries</h1>
+                    <p>Love the crispiness of these fries,it's tastety.</p>
+                    <div class="price">Rs.120/-</div><br>
+                    <div class="add-to-cart" id="cart-control-1">
+                    <button class="add-btn" onclick="addToCart(2)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="pizza.jpeg" alt="Pizza">
+                    <h1>Pizza</h1>
+                    <p>Pizza is not a trend, it's a way of life.</p>
+                    <div class="price">Rs.199/-</div><br>
+                    <div class="add-to-cart" id="cart-control-1">
+                    <button class="add-btn" onclick="addToCart(3)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="noodels.jpeg" alt="Noodles">
+                    <h1>Noodles</h1>
+                    <p>A bowl of noodles is like a slice of happiness.</p>
+                    <div class="price">Rs.119/-</div><br>
+                    <div class="add-to-cart" id="cart-control-1">
+                    <button class="add-btn" onclick="addToCart(4)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+<script>
+    const cart = {};
+
+    function addToCart(id) {
+        const card = document.querySelectorAll('.card')[id - 1];
+        const title = card.querySelector('h1').innerText;
+        const priceText = card.querySelector('.price').innerText;
+        const price = parseInt(priceText.replace('Rs.', '').replace('/-', '').trim());
+
+        // Initialize or increase quantity
+        if (!cart[id]) {
+            cart[id] = { title, price, quantity: 1 };
+        } else {
+            cart[id].quantity++;
+        }
+
+        // Update UI
+        updateCartUI(id);
+        console.log(cart);
+    }
+
+    function updateCartUI(id) {
+        const container = document.querySelectorAll('.add-to-cart')[id - 1];
+        const quantity = cart[id].quantity;
+
+        container.innerHTML = `
+            <button class="qty-btn" onclick="decreaseQty(${id})">-</button>
+            <span style="margin: 0 10px; font-size: 18px;">${quantity}</span>
+            <button class="qty-btn" onclick="increaseQty(${id})">+</button>
+        `;
+    }
+
+    function increaseQty(id) {
+        cart[id].quantity++;
+        updateCartUI(id);
+    }
+
+    function decreaseQty(id) {
+        cart[id].quantity--;
+        if (cart[id].quantity === 0) {
+            // Remove item from cart and reset button
+            delete cart[id];
+            const container = document.querySelectorAll('.add-to-cart')[id - 1];
+            container.innerHTML = `<button class="add-btn" onclick="addToCart(${id})">Add to Cart</button>`;
+        } else {
+            updateCartUI(id);
+        }
+    }
+</script>
+
+</body>
+</html>
